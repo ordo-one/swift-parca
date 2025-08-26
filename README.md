@@ -2,7 +2,7 @@
 
 `swift-parca` supports continuous low-overhead profiling of Swift Server applications at scale, for always-on tracking of performance issues in production.
 
-`swift-parca` is a fully packaged solution that extends [Parca](https://www.parca.dev), an open-source continuous profiling tool that embeds [opentelemetry-ebpf-profiler](https://github.com/open-telemetry/opentelemetry-ebpf-profiler) for creating low overhead samples, with native support for Swift symbol demangling.
+`swift-parca` is a fully packaged solution that extends [Parca](https://www.parca.dev), an open-source continuous profiling tool that embeds [opentelemetry-ebpf-profiler](https://github.com/parca-dev/opentelemetry-ebpf-profiler) for creating low overhead samples, with native support for Swift symbol demangling.
 
 Parca consists of an agent that runs on each node that is under monitoring as well as a server that aggregates all the profiling data for analysis using familiar tools such as flamegraphs and sample overviews.
 
@@ -38,6 +38,10 @@ docker-compose -f docker-compose.agent.yml up -d
 ## Documentation
 
 For further setup and usage instructions, please refer to the [Parca Documentation](https://www.parca.dev/docs/overview).
+
+## Performance Overhead
+
+[Parca agent](https://github.com/parca-dev/parca-agent) samples [19 times per second](https://www.parca.dev/docs/parca-agent-design/#obtaining-raw-data) per core, only the stack addresses are aggregated in eBPF maps; the rest of the processing is sending them and binaries to the server, where demangling/symbolicatition happens on demand when a trace is viewed. In practice this results in neglible overhead on the profiled application, that can be sub 1%.
 
 ## Background 
 
