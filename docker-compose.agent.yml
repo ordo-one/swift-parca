@@ -1,0 +1,22 @@
+version: "3.9"
+services:
+  parca-agent:
+    image: ghcr.io/parca-dev/parca-agent:v0.41.0
+    container_name: parca-agent
+    privileged: true
+    pid: "host"
+    network_mode: "host"
+    environment:
+      - REMOTE_STORE_ADDRESS=${REMOTE_STORE_ADDRESS}
+    command:
+      - "--remote-store-address=${REMOTE_STORE_ADDRESS}"
+      - "--remote-store-insecure"
+    volumes:
+      - /run:/run:ro
+      - /boot:/boot:ro
+      - /lib/modules:/lib/modules:ro
+      - /sys/kernel/debug:/sys/kernel/debug:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/bpf:/sys/fs/bpf:ro
+      - /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket:ro
+#      - /var/run/docker.sock:/var/run/docker.sock:ro
