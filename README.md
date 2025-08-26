@@ -32,14 +32,10 @@ docker-compose -f docker-compose.agent.yml up -d
 
 ## Using llvm-addr2line
 
-To use [`llvm-addr2line`](https://llvm.org/docs/CommandGuide/llvm-addr2line.html), add the following to the `swift-build` stage of your Dockerfile:
+To use [`llvm-addr2line`](https://llvm.org/docs/CommandGuide/llvm-addr2line.html), uncomment the line containing `apt-get install -y llvm-19` in Dockerfile.
+This installs the LLVM tools, making the binary available at `/usr/bin/llvm-addr2line-19`.
 
-```Dockerfile
-# swift-build stage
-RUN apt-get update && apt-get install -y llvm-19
-```
-
-This installs the LLVM tools, making the binary available at `/usr/bin/llvm-addr2line-19`. Then `docker-compose.yml` environment should be updated:
+Then `docker-compose.yml` environment should be updated:
 
 ```bash
     environment:
