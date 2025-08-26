@@ -37,7 +37,7 @@ RUN cargo install addr2line --features="bin"
 FROM swift:slim
 
 # To add llvm-addr2line
-RUN apt-get update && apt-get install -y llvm-19 && apt-get clean && rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && apt-get install -y llvm-19 && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Grant permissions for Parca to persisted storage
 RUN mkdir -p /data && chown 65534:65534 /data && chmod 775 /data
