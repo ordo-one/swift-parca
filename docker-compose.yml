@@ -9,6 +9,8 @@ services:
 #      - ADDR2LINE_PATH=/usr/bin/llvm-addr2line-19
     volumes:
       - data:/data
-    command: ["--symbolizer-external-addr-2-line-path=/usr/local/bin/addr2line-swift", "--enable-persistence"]
+    command:
+      - "--symbolizer-external-addr-2-line-path=/usr/local/bin/addr2line-swift"
+      - "--enable-persistence"
 volumes:
   data:

@@ -42,17 +42,13 @@ This direct access of the native Swift runtime function is needed until [SE-262]
 
 ## Using llvm-addr2line
 
-If you want to use [`llvm-addr2line`](https://llvm.org/docs/CommandGuide/llvm-addr2line.html) instead of the `gimli-rs/addr2line`, add the following to the `swift-build` stage of your Dockerfile:
+If you want to use [`llvm-addr2line`](https://llvm.org/docs/CommandGuide/llvm-addr2line.html) instead of the `gimli-rs/addr2line`, uncomment the line containing `apt-get install -y llvm-19` in the Dockerfile.
 
-```Dockerfile
-# swift-build stage
-RUN apt-get update && apt-get install -y llvm-19
-```
+This installs the LLVM tools, making the binary available at `/usr/bin/llvm-addr2line-19`.
 
-This installs the LLVM tools, making the binary available at `/usr/bin/llvm-addr2line-19`. Then `docker-compose.yml` environment should be updated:
+Then you need to update the `docker-compose.yml` environment:
 
 ```bash
     environment:
       - ADDR2LINE_PATH=/usr/bin/llvm-addr2line-19
 ```
-
