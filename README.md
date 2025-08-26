@@ -6,6 +6,12 @@
 
 Parca consists of an agent that runs on each node that is under monitoring as well as a server that aggregates all the profiling data for analysis using familiar tools such as flamegraphs and sample overviews.
 
+Example of reviewing `swift-build` stacks:
+<img width="1449" height="1264" alt="swift-build" src="https://github.com/user-attachments/assets/a7066afd-f417-4a90-b32a-a65d44f8770a" />
+
+Example of `swift-nio` benchmark:
+<img width="1710" height="1196" alt="swift-nio" src="https://github.com/user-attachments/assets/75d13bee-84d2-4d13-840b-e34a1395539a" />
+
 ## 🚀 Getting Started
 `swift-parca` is provided as a single, pre-configured Docker container image that bundles Parca and all necessary dependencies, to simplify profiling of Swift applications at scale.
 
@@ -18,7 +24,7 @@ Use the provided `docker-compose.yml` to bring up the Parca server:
 docker compose up -d
 ```
 
-This starts the Parca server, listening for profiling data from agents on port and a UI 7070.
+This starts the Parca server, listening on HTTP port 7070 for UI and profiling data from agents.
 
 2. Start the Parca Agent
 
@@ -52,3 +58,7 @@ Then you need to update the `docker-compose.yml` environment:
     environment:
       - ADDR2LINE_PATH=/usr/bin/llvm-addr2line-19
 ```
+
+## Requirements
+
+The container is packaged for Linux x86_64 and ARM64. It is possible to run entirely under a Linux VM (with kernel 5.4+) under Apple sillicon.
