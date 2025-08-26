@@ -7,10 +7,10 @@
 Parca consists of an agent that runs on each node that is under monitoring as well as a server that aggregates all the profiling data for analysis using familiar tools such as flamegraphs and sample overviews.
 
 ## Sample output
-Example of reviewing `swift-build` stacks:
+### Example of reviewing `swift-build` stacks
 <img width="1449" height="1264" alt="swift-build" src="https://github.com/user-attachments/assets/a7066afd-f417-4a90-b32a-a65d44f8770a" />
 
-Example of `swift-nio` benchmark:
+### Example of `swift-nio` benchmark
 <img width="1710" height="1196" alt="swift-nio" src="https://github.com/user-attachments/assets/75d13bee-84d2-4d13-840b-e34a1395539a" />
 
 ## 🚀 Getting Started
