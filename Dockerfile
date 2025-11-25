@@ -1,7 +1,7 @@
 # build Swift wrapper
 FROM swift AS swift-build
 
-ENV PARCA_VERSION=v0.24.0
+ENV PARCA_VERSION=v0.25.0
 
 # Install curl and download Swift Static SDK
 RUN apt-get update \
@@ -30,7 +30,7 @@ RUN ARCH=$(uname -m) \
     && curl -sL https://raw.githubusercontent.com/parca-dev/parca/main/parca.yaml > /parca.yaml
 
 # build gimli addr2line
-FROM rust:1.81 AS rust-build
+FROM rust:1.91 AS rust-build
 RUN cargo install addr2line --features="bin"
 
 # Final stage
