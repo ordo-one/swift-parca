@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-  name: "swift-addr2line",
+  name: "swift-parca",
   platforms: [
     .macOS(.v14)
   ],
