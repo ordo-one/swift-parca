@@ -1,7 +1,7 @@
 # build Swift wrapper
 FROM swift AS swift-build
 
-ENV PARCA_VERSION=v0.25.0
+ARG PARCA_VERSION=v0.27.1
 
 # Install curl and download Swift Static SDK
 RUN apt-get update \
